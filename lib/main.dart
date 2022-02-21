@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
-import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
+import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +18,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: const MyHomePage(title: 'Tutorial Flutter'),
-      // home: GalleryPhotoZoomableView(),
-      home: CheckboxGroupView(),
+      // home: const GalleryPhotoZoomableView(),
+      // home: CheckboxGroupView(),
+      home: UploadPhotoLocalStorage(),
     );
   }
 }
