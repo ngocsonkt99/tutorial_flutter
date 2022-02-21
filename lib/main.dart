@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
 
 void main() {
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: const MyHomePage(title: 'Tutorial Flutter'),
-      home: GalleryPhotoZoomableView(),
+      // home: GalleryPhotoZoomableView(),
+      home: CheckboxGroupView(),
     );
   }
 }
