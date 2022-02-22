@@ -153,6 +153,7 @@ class _GalleryPhotoWrapper extends State<GalleryPhotoWrapper> {
   PhotoViewGalleryPageOptions _buildItem(BuildContext context, int index) {
     final GalleryItemModel item = widget.galleries![index];
     return PhotoViewGalleryPageOptions(
+        // imageProvider: AssetImage(item.resource),
         imageProvider: ((item.assetType == "url")
             ? NetworkImage(item.resource)
             : AssetImage(item.resource)) as ImageProvider<Object>?,

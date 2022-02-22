@@ -13,11 +13,14 @@ class GalleryItemThumbnail extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Hero(
-          tag: galleryItemModel.id,
-          child: Image.asset(galleryItemModel.resource, height: 300.0, width: 450.0, fit: BoxFit.fill,)
+          tag: galleryItemModel.id, 
+          child: (galleryItemModel.assetType == "url") ? 
+            Image.network(galleryItemModel.resource, height: 300.0, width: 800.0, fit: BoxFit.fill,)
+            :
+            Image.asset(galleryItemModel.resource, height: 300.0, width: 800.0, fit: BoxFit.fill,)
         )
       )
-      
+
     );
   }
 }
