@@ -1,54 +1,54 @@
-// import 'package:bloc/bloc.dart';
-// import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
-// import 'package:tutorial_flutter/repositories/ApplicationTracerRepository.dart';
-// import 'package:tutorial_flutter/services/ApiService.dart';
+import 'package:bloc/bloc.dart';
+import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
+import 'package:tutorial_flutter/repositories/ApplicationTracerRepository.dart';
+import 'package:tutorial_flutter/services/ApiService.dart';
 
-// class ApplicationTracerBloc extends Bloc<ApplicationTracerEvent, ApplicationTracerState> {
+class ApplicationTracerBloc extends Bloc<ApplicationTracerEvent, ApplicationTracerState> {
 
-//   ApplicationTracerBloc() : super(ApplicationTracerState());
+  ApplicationTracerBloc() : super(ApplicationTracerState());
 
-//   @override
-//   Stream<ApplicationTracerState> mapEventToState(ApplicationTracerEvent event) async* {
-//     if (event is GetApplicationDetailEvent) {
-//       try{
+  @override
+  Stream<ApplicationTracerState> mapEventToState(ApplicationTracerEvent event) async* {
+    if (event is GetApplicationDetailEvent) {
+      try{
+        
+        yield LoadingTracer();
+        await Future.delayed(const Duration(seconds: 2));
+        
+        final data = await APIWeb().load(ApplicationTracerRepository.getByNoApli(event.noapli));
 
-//         yield LoadingTracer();
-//         await Future.delayed(const Duration(seconds: 2));
+        yield ApplicationTracerState(application: data);
 
-//         final data = await APIWeb().load(ApplicationTracerRepository.getByNoApli(event.noapli));
+      }catch(e){
+        yield FailureProduct(e.toString());
+      }
+    }
+  }
+}
 
-//         yield ApplicationTracerState(application: data);
+//event
+abstract class ApplicationTracerEvent {}
 
-//       }catch(e){
-//         yield FailureProduct(e.toString());
-//       }
-//     }
-//   }
-// }
+class GetApplicationDetailEvent extends ApplicationTracerEvent {
+  String? noapli;
 
-// //event
-// abstract class ApplicationTracerEvent {}
-
-// class GetApplicationDetailEvent extends ApplicationTracerEvent {
-//   String noapli;
-
-//   GetApplicationDetailEvent({required this.noapli});
-// }
+  GetApplicationDetailEvent({this.noapli});
+}
 
 
-// //state
-// class ApplicationTracerState {
-//   final ApplicationTracerModel application;
+//state
+class ApplicationTracerState {
+  final ApplicationTracerModel? application;
 
-//   const ApplicationTracerState({required this.application});
+  const ApplicationTracerState({this.application});
 
-//   factory ApplicationTracerState.initial() => ApplicationTracerState();
-// }
+  factory ApplicationTracerState.initial() => ApplicationTracerState();
+}
 
-// class FailureProduct extends ApplicationTracerState {
-//   final String error;
+class FailureProduct extends ApplicationTracerState {
+  final String error;
 
-//   FailureProduct(this.error);
-// }
+  FailureProduct(this.error);
+}
 
-// class LoadingTracer extends ApplicationTracerState {}
+class LoadingTracer extends ApplicationTracerState {}

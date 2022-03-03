@@ -3,6 +3,8 @@ import 'package:tutorial_flutter/models/MenuModel.dart';
 import 'package:tutorial_flutter/views/BlocProductView.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
+import 'package:tutorial_flutter/views/Profile/ProfileListView.dart';
+import 'package:tutorial_flutter/views/Profile/ProfileView.dart';
 import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
 import 'package:tutorial_flutter/views/TrackingView.dart';
 
@@ -73,6 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
       // MenuModel(name: "BLOC Profile CRUD & Pagination ", view: ProfileListView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
 
       // MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 50)),
+      MenuModel(name: "BLOC Profile Update", view: ProfileView(id: 1), icon: Icon(Icons.person, size: 50)),
+      MenuModel(name: "BLOC Profile CRUD & Pagination ", view: ProfileListView(), icon: Icon(Icons.settings_applications_outlined, size: 50)),
+        
     });
   }
 
@@ -96,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: GridView(
                 // shrinkWrap: true,
                 padding: const EdgeInsets.only(
-                    left: 16, right: 16, top: 16, bottom: 16),
+                    left: 20, right: 20, top: 10, bottom: 20),
                 physics: const ScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 children: List.generate(
@@ -130,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 5, left: 10, right: 10, bottom: 5),
+                                    top: 5, left: 5, right: 5, bottom: 5),
                                 child: Container(
                                     alignment: Alignment.center,
                                     decoration: const BoxDecoration(
@@ -140,12 +145,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: Column(
                                       children: [
                                         const SizedBox(
-                                          height: 10,
+                                          height: 1,
                                         ),
                                         Text("#" + (index + 1).toString(),
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 30,
+                                                fontSize: 25,
                                                 color: Colors.orange)),
                                         const Divider(
                                           thickness: 3,
