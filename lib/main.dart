@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_flutter/models/MenuModel.dart';
+import 'package:tutorial_flutter/views/BlocProductView.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
 import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
+import 'package:tutorial_flutter/views/TrackingView.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,16 +53,26 @@ class _MyHomePageState extends State<MyHomePage> {
           view: const CheckboxGroupView(),
           icon: const Icon(
             Icons.check_box_outlined,
-            size: 40,
+            size: 50,
           )),
       MenuModel(
           name: "Image Zoomable",
           view: const GalleryPhotoZoomableView(),
-          icon: const Icon(Icons.image_search, size: 40)),
+          icon: const Icon(Icons.image_search, size: 50)),
       MenuModel(
           name: "Image Upload Local Storage",
           view: UploadPhotoLocalStorage(),
-          icon: const Icon(Icons.image_outlined, size: 40)),
+          icon: const Icon(Icons.image_outlined, size: 50)),
+      // MenuModel(name: "Image Upload Local Storage", view: null, icon: Icon(Icons.image_outlined, size: 70)),
+      MenuModel(
+          name: "BLOC Fetch Complex JSON ",
+          view: BlocProductView(),
+          icon: const Icon(Icons.settings_applications_outlined, size: 50)),
+      // MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
+      // MenuModel(name: "BLOC Profile Update", view: ProfileView(id: 1), icon: Icon(Icons.person, size: 70)),
+      // MenuModel(name: "BLOC Profile CRUD & Pagination ", view: ProfileListView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
+
+      // MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 50)),
     });
   }
 
@@ -71,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Center(
             child: Text(
           widget.title,
-          style: const TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 30),
         )),
         backgroundColor: Colors.redAccent,
         elevation: 0.0,
@@ -128,16 +140,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: Column(
                                       children: [
                                         const SizedBox(
-                                          height: 1,
+                                          height: 10,
                                         ),
                                         Text("#" + (index + 1).toString(),
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 20,
+                                                fontSize: 30,
                                                 color: Colors.orange)),
                                         const Divider(
                                           thickness: 3,
-                                          color: Colors.purple,
                                         ),
                                         const SizedBox(
                                           height: 1,
@@ -149,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         Text(menuModel[index].name,
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 13)),
+                                                fontSize: 19)),
                                       ],
                                     )),
                               ),
@@ -164,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   crossAxisCount: 3,
                   mainAxisSpacing: 20.0,
                   crossAxisSpacing: 30.0,
-                  childAspectRatio: 0.7,
+                  childAspectRatio: 0.5,
                 ),
               ),
             )

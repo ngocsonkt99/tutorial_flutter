@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_absolute_path/flutter_absolute_path.dart';
-import 'package:multi_image_picker2/multi_image_picker2.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
+// import 'package:multi_image_picker2/multi_image_picker2.dart';
 // import 'package:path_provider/path_provider.dart';
 import 'package:path_provider/path_provider.dart';
 class UploadPhotoLocalStorage extends StatefulWidget {
